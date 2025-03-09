@@ -63,6 +63,24 @@
                echo '<span style="color:green">✅ Finalizado</span>';
             }
         }
+
+        function filtrarProjetos($listaDeProjetos, $finalizado = null) {
+
+            if (is_null($finalizado)) {
+                return $listaDeProjetos;
+            }
+
+
+            $filtrados = [];
+            
+            foreach ($listaDeProjetos as $projeto) {
+                if ( $projeto["finalizado"] === $finalizado) {
+                    $filtrados [] = $projeto;
+                }
+            }
+
+            return $filtrados;
+        }
     ?>
 
     <h1><?= $titulo; ?></h1>  
@@ -72,7 +90,7 @@
     <hr/>
 
     <ul>
-        <?php foreach ($projetos as $projeto): ?>
+        <?php foreach (filtrarProjetos($projetos, ) as $projeto): ?>
             <div>
                 <?php if ( ! (2024 - $ano) > 2): ?>
                     <style> background-color: burlywood; </style>
