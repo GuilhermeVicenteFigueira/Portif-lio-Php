@@ -58,5 +58,21 @@
 <p><?= $subtitulo ?></p>
 <p><?php echo $ano ?></p>
 
+<hr>
+
+<ul>
+    <?php foreach($projetos as $projeto): ?>
+        <li>
+            <h2><?= $projeto['titulo'] ?></h2>
+            <p><?= $projeto['descricao'] ?></p>
+            <div>
+                <strong>Linguagem:</strong> <?= $projeto['linguagem'] ?><br>
+                <strong>Data:</strong> <?= $projeto['data'] ?><br>
+                <strong>Status:</strong> <?= $projeto['finalizado'] ? '✅ Finalizado' : '⛔ Não Finalizado' ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
 </body>
 </html>
