@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portifólio</title>
+<title>Meu Portifólio</title>
 </head>
 <body>
 
@@ -52,6 +47,10 @@
         ],
     ];
 
+    function verificarStatus($p) {
+        return $p['finalizado'] ? '<span style="color: green;">✅ Finalizado</span>' : '<span style="color: red;">⛔ Não Finalizado</span>';
+}
+
 ?>
 
 <h1><?= $titulo ?></h1>
@@ -60,17 +59,17 @@
 
 <hr>
 
-<ul>
+<ul style="list-style: none; padding: 0;">
     <?php foreach($projetos as $projeto): ?>
-        <li>
+        <div style="background-color: <?= !$projeto['finalizado'] ? 'burlywood' : 'lightgreen' ?>; padding: 10px; margin-bottom: 10px;">
             <h2><?= $projeto['titulo'] ?></h2>
             <p><?= $projeto['descricao'] ?></p>
             <div>
                 <strong>Linguagem:</strong> <?= $projeto['linguagem'] ?><br>
                 <strong>Data:</strong> <?= $projeto['data'] ?><br>
-                <strong>Status:</strong> <?= $projeto['finalizado'] ? '✅ Finalizado' : '⛔ Não Finalizado' ?>
+                <strong>Status:</strong> <?= verificarStatus($projeto) ?>
             </div>
-        </li>
+        </div>
     <?php endforeach; ?>
 </ul>
 
