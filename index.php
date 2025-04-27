@@ -74,7 +74,24 @@
             }
 
             return '<span style="color: green;">⛔ não finalizado</span>';
+        }
 
+        function filtrarProjetosFinalizados($listaDeProjetos,$finalizado = null) {
+
+            if(is_null($finalizado)) {
+                return $listaDeProjetos;
+            }
+
+
+            $filtrados = [];
+
+            foreach ($listaDeProjetos as $projeto) {
+                if($projeto['finalizado'] === $finalizado) {
+                    $filtrados [] = $projeto;
+                }
+            }
+
+         return $filtrados;
 
         }
     
@@ -90,7 +107,7 @@
 
     <ul>
 
-        <?php foreach($projetos as $projeto): ?>
+        <?php foreach(filtrarProjetosFinalizados($projetos) as $projeto): ?>
 
             <div
     
