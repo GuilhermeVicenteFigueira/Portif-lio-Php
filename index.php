@@ -21,7 +21,7 @@
 
         $projeto = 'Meu Portfolio';
 
-        $finalizado = false; // true,1 ou false,0
+        $finalizado = false; 
 
         $dataDoProjeto = '2024-10-11';
 
