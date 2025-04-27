@@ -17,7 +17,7 @@
 
         $subtitulo = 'Seja bem vindo ao meu Portfolio!!';
 
-        $ano = 2024;
+        $ano = 2025;
 
         $projeto = 'Meu Portfolio';
 
@@ -31,35 +31,35 @@
             [
                 "titulo"=>"Meu Portifolio",
                 "finalizado"=>false,
-                "data"=>"2025-03-09",
+                "ano"=>2025,
                 "descricao"=>"Meu primeiro portifolio. Escrito em PHP e HTML",
                 "linguagem" => "PHP",
             ],
             [
                 "titulo"=>"Estudos de Api RestFull Crud python",
                 "finalizado"=>True,
-                "data"=>"2025-01-09",
+                "ano"=> 2025,
                 "descricao"=>"Meu primeiro estudo com Api Rest",
                 "linguagem"=> "Python",
             ],
             [
                 "titulo"=>"Estudos de Api RestFull intermediario Login e Logout",
                 "finalizado"=>True,
-                "data"=>"2025-01-20",
+                "ano"=>2025,
                 "descricao"=>"Meu Segundo estudo com Api Rest, Login e Logout, banco de dados e Codificação",
                 "linguagem"=> "Python",
             ],
             [
                 "titulo"=>"Projeto Player",
                 "finalizado"=>True,
-                "data"=>"2024-12",
+                "ano"=>2024,
                 "descricao"=>"Minha prova de POO utilizando PHP oritado a objetos",
                 "linguagem"=> "PHP",
             ],
             [
                 "titulo"=>"Projeto Escritorio",
                 "finalizado"=>True,
-                "data"=>"2024-12",
+                "ano"=> 2024,
                 "descricao"=>"Umas das minhas de POO utilizando PHP oritado a objetos",
                 "linguagem"=> "PHP",
             ],
@@ -76,25 +76,26 @@
             return '<span style="color: green;">⛔ não finalizado</span>';
         }
 
-        function filtrarProjetosFinalizados($listaDeProjetos,$finalizado = null) {
 
-            if(is_null($finalizado)) {
-                return $listaDeProjetos;
-            }
-
-
+        function filtro ($itens ,$funcao ) {
             $filtrados = [];
 
-            foreach ($listaDeProjetos as $projeto) {
-                if($projeto['finalizado'] === $finalizado) {
-                    $filtrados [] = $projeto;
+            foreach ($itens  as $item) {
+                if($funcao($item)) {
+                    $filtrados [] = $item;
                 }
             }
 
          return $filtrados;
 
         }
+
+        $projetosFiltrados = filtro($projetos, function($projeto){
+            return $projeto['ano'] === 2024 || $projeto['ano'] === 2025;
+        }
     
+    );
+        
     ?>
     
     <h1><?= $titulo ?></h1>
@@ -107,7 +108,7 @@
 
     <ul>
 
-        <?php foreach(filtrarProjetosFinalizados($projetos) as $projeto): ?>
+        <?php foreach($projetosFiltrados as $projeto): ?>
 
             <div
     
@@ -124,7 +125,7 @@
 
                 <div>
 
-                    <div><?= $projeto['data'] ?></div>
+                    <div><?= $projeto['ano'] ?></div>
 
                     <div>Projeto:
 
